@@ -1,0 +1,54 @@
+﻿@model IEnumerable<JobPortal.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="pt-3 pb-3 pl-2">משתמשים</h2>
+<div class="table-responsive" dir="rtl">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                קורות חיים
+            </th>
+            <th>
+                שם מלא
+            </th>
+            <th>
+                תפקיד
+            </th>
+            <th>
+                אימייל
+            </th>
+
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.CVPath != null)
+                    {
+                        <a href="@item.CVPath" target="_blank">הצג</a>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.ActionLink("מחק", "Delete", new { id = item.Id }, new { @class="btn btn-sm btn-danger"})
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

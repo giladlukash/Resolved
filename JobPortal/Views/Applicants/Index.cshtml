@@ -1,0 +1,67 @@
+﻿@model IEnumerable<JobPortal.Models.Applied>
+    @using JobPortal.Models;
+@{
+    ViewBag.Title = "Appliedjobs";
+
+    ApplicationDbContext db = new ApplicationDbContext();
+}
+
+<table class="table table-bordered">
+    <tr>
+
+        <th>
+            שם המשרה
+        </th>
+        <th>
+            תאריך פניה
+        </th>
+        <th>מיומנויות</th>
+        <th>
+            סטטוס
+        </th>
+
+        <th>קורות חיים</th>
+        <th>פעולה</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Jobs.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppliedOn)
+            </td>
+            <td>
+                @{ 
+                    var skills = db.Skills.Where(c => c.UserId == item.UserId).ToList();
+
+                    foreach(var s in skills)
+                    {
+                        <span>@s.Skill ,</span>
+                    }
+                }
+            </td>
+            <td>
+                סטטוס
+            </td>
+            <td>
+                <a href="@Html.Action("GetCV","Userjobs",new { id = item.UserId})" target="_blank">הצג קורות חיים</a>
+            </td>
+            <td>
+                <a href="@Url.Action("Accept", "Applicants", new { id = item.Id})">אשר</a> |
+                <a href="/applicants/reject/@item.Id">סרב</a>
+            </td>
+            <td>
+                <a href="/userjobs/apply?jobid=@item.JobId">פרטים</a> |
+                <a href="/userjobs/deleteapplied?jobid=@item.JobId" onclick="return confirm('האם אתה בטוח שברצונך למחוק?')">מחק</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<JobPortal.Models.jobs>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="pt-2">משרות</h2>
+
+<p>
+    @Html.ActionLink("צור משרה חדשה", "Create",new { },new { @class = "btn btn-primary"})
+</p>
+<div class="pb">
+    <div class="width-100">
+        <table class="tables table-striped table-bordered table-hover">
+            <tr>
+
+                <th>
+                    שם משרה
+                </th>
+                <th>
+                    מיומנויות
+                </th>
+                <th>
+                    תיאור המשרה
+                </th>
+                <th>
+                    דרישות התפקיד
+                </th>
+                <th>
+                    דרישות העובד
+                </th>
+                <th>
+                    ניסיון
+                </th>
+                <th>
+                    שעות שבועיות
+                </th>
+                <th>
+                    שכר
+                </th>
+                <th>
+                    מינימום שנות ניסיון
+                </th>
+                <th>
+                    מיקום
+                </th>
+                <th>
+                    מספר הקצאות
+                </th>
+
+                <th>
+                    סטטוס
+                </th>
+
+                <th>
+                    פעולה
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skills)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequiredDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequiredResponsibilities)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequiredQualification)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequiredExperience)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HrsPerWeek)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MinExpInYr)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoOfOpening)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+
+
+                    <td>
+                        <a href="@Url.Action("Index", "Applicants", new { jobid = item.JobId })" class="btn btn-sm btn-outline-primary">מועמדים</a> |
+                        @Html.ActionLink("ערוך", "Edit", new { id = item.JobId }, new { @class = "btn btn-sm btn-primary" }) |
+                        @Html.ActionLink("פרטים", "Details", new { id = item.JobId }, new { @class = "btn btn-sm btn-info" }) |
+                        @Html.ActionLink("מחק", "Delete", new { id = item.JobId }, new { @class = "btn btn-sm btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

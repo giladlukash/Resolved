@@ -1,0 +1,74 @@
+﻿@model IEnumerable<JobPortal.Models.Skills>
+@{
+    ViewBag.Title = "AddSKills";
+}
+
+<h2>הוסף מיומנויות</h2>
+<form action="/Manage/AddSkills" enctype="multipart/form-data" method="post">
+    <div class="card-body">
+
+        <div class="content-header">
+
+            <div class="row mb-2">
+                <div class="">
+                    
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <label class="">בחר מיומנויות</label>
+                    <select class="candidate-skill-gener form-control" name="Skills" multiple id="skills" data-placeholder="Select Your Skills">
+
+                        <option value="Analytical Skills">Analytical Skills</option>
+                        <option value="Application Development">Application Development</option>
+                        <option value="Architecture">Architecture</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Communication Skills">Communication Skills</option>
+                        
+                        
+                        <option value="Data Network">Data Network</option>
+                        <option value="Designing">Designing</option>
+                        <option value="Development">Development</option>
+                        <option value="Education">Education</option>
+                        <option value="Flexibility">Flexibility</option>
+                        
+                        <option value="IT Engineering">IT Engineering</option>
+                        <option value="JS">JS</option>
+                        <option value="Management">Management</option>
+                        
+                        
+                        <option value="Office Management">Office Management</option>
+                        
+                        
+                        <option value="Php">Php</option>
+                        <option value="Problem Solving">Problem Solving</option>
+                        <option value="SEO">SEO</option>
+                        <option value="SMM">SMM</option>
+                        
+                        <option value="Team Management">Team Management</option>
+                        <option value="Team Work">Team Work</option>
+                        <option value="Technical">Technical</option>
+                        
+                    </select>
+                </div>
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <input type="submit" value="שמור" class="btn btn-outline-navy">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+<script>
+    $(document).ready(function () {
+        $("#skills").select2();
+
+            var skills = @Html.Raw(Json.Encode(ViewBag.skills));
+            $('#skills').val(skills);
+            $('#skills').trigger('change');
+    })
+</script>

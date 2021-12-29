@@ -1,0 +1,134 @@
+﻿@model JobPortal.Models.jobs
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>יצירת משרה חדשה</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" dir="rtl">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            שם המשרה
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            מיומנויות
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Skills, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Skills, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            תיאור
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequiredDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequiredDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            דרישות התפקיד
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequiredResponsibilities, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequiredResponsibilities, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            דרישות העובד
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequiredQualification, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequiredQualification, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            ניסיון
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RequiredExperience, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RequiredExperience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            שעות שבועיות
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HrsPerWeek, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HrsPerWeek, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            שכר
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            מינימום שנות ניסיון
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MinExpInYr, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MinExpInYr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            מיקום
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            מספר הקצאות
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoOfOpening, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoOfOpening, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            סטטוס
+            <div class="col-md-10">
+                <select class="form-control" name="Status">
+                    <option value="Open">פעיל</option>
+                    <option value="Close">סגור</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br/>
+       
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="צור" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("חזור לרשימה", "Index")
+</div>

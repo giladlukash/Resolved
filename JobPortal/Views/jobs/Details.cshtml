@@ -1,0 +1,128 @@
+﻿@model JobPortal.Models.jobs
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>פרטים</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+       
+
+        <dt>
+            שם המשרה
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            מיומנויות
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skills)
+        </dd>
+
+        <dt>
+            תיאור
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredDescription)
+        </dd>
+
+        <dt>
+            דרישות התפקיד
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredResponsibilities)
+        </dd>
+
+        <dt>
+            דרישות העובד
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredQualification)
+        </dd>
+
+        <dt>
+            ניסיון
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredExperience)
+        </dd>
+
+        <dt>
+            שעות שבועיות
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HrsPerWeek)
+        </dd>
+
+        <dt>
+            שכר
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            מינימום שנות ניסיון
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinExpInYr)
+        </dd>
+
+        <dt>
+            מיקום
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            מספר הקצאות
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoOfOpening)
+        </dd>
+
+       
+
+        <dt>
+            סטטוס
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            קוד משתמש
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+       
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("עריכה", "Edit", new { id = Model.JobId }) |
+    @Html.ActionLink("חזור לרשימה", "Index")
+</p>

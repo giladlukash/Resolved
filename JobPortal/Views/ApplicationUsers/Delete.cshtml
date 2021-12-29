@@ -1,0 +1,57 @@
+﻿@model JobPortal.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>מחיקת משתמש</h2>
+
+<h3>האם אתה בטוח שאתה רוצה למחוק משתמש זה?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CVPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+       
+    </dl>
+    <input type="hidden" name="id" value="@Model.Id" />
+    @using (Html.BeginForm("Delete", "ApplicationUsers", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="מחק" class="btn btn-danger" /> |
+            @Html.ActionLink("חזור לרשימה", "Index")
+        </div>
+    }
+</div>
